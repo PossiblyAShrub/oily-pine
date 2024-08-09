@@ -17,6 +17,8 @@ makedepends_host="linux-headers openssl-dev>3"
 [ -z "$BOOTSTRAP" ] && makedepends_host="$makedepends_host utmps-dev utmps-static"
 makedepends="$makedepends_build $makedepends_host"
 checkdepends="zip"
+# Use our own shell
+depends="oils-for-unix"
 install="$pkgname.post-install $pkgname.post-upgrade
 	$pkgname-extras.post-install $pkgname-extras.pre-deinstall"
 subpackages="
@@ -327,13 +329,13 @@ ifupdown() {
 }
 
 binsh() {
-	pkgdesc="busybox ash /bin/sh"
+	pkgdesc="oils-for-unix osh /bin/sh - overwrite for oily-pine"
 	provides="/bin/sh"
 	provider_priority=100
 
 	install -d "$subpkgdir"/bin
 
-	ln -s /bin/busybox "$subpkgdir"/bin/sh
+	ln -s /bin/oils-for-unix "$subpkgdir"/bin/sh
 }
 
 _helper_openrc() {
