@@ -1,3 +1,17 @@
+# Oily-pine
+
+Alpine mixed with oils-for-unix.
+Overwrite /bin/sh with oils.
+
+run the following commands to get a build of all packages with oils as /bin/sh:
+
+```
+# Create oils-for-unix package from local repo
+podman run -ti --rm --mount "type=bind,source=./,target=/aports" alpine /aports/build-all.sh
+# Script to overwrite /bin/sh with a link to oils-for-unix and build all packages
+podman run -ti --rm --mount "type=bind,source=./,target=/aports" alpine /aports/dirty-build.sh
+```
+
 # Alpine Linux aports repository
 
 This repository contains the APKBUILD files for each and every

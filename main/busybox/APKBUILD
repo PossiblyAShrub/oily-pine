@@ -4,7 +4,8 @@
 # Contributor: Natanael Copa <ncopa@alpinelinux.org>
 # Maintainer: Sören Tempel <soeren+alpine@soeren-tempel.net>
 pkgname=busybox
-pkgver=1.36.1
+# Overwrite version to be able to update
+pkgver=99.36.1
 pkgrel=31
 pkgdesc="Size optimized toolbox of many common UNIX utilities"
 url="https://busybox.net/"

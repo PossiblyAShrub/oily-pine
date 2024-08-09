@@ -17,6 +17,7 @@ source="https://www.oilshell.org/download/oils-for-unix-$pkgver.tar.gz"
 build() {
 	# not gnu autoconf
 	./configure \
+		--prefix= \
 		--datarootdir /usr/share
 	_build/oils.sh
 }
