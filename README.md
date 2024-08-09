@@ -12,6 +12,9 @@ podman run -ti --rm --mount "type=bind,source=./,target=/aports" alpine /aports/
 podman run -ti --rm --mount "type=bind,source=./,target=/aports" alpine /aports/dirty-build.sh
 ```
 
+TODOS:
+- [ ] create & use a `build` user, tests fail as root
+
 # Alpine Linux aports repository
 
 This repository contains the APKBUILD files for each and every

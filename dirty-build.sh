@@ -13,7 +13,7 @@ mkdir -p /aports/repo
 
 cd /aports
 
-apk add abuild-rootbld
+apk add abuild
 
 cd main/oils-for-unix
 abuild -Fr
