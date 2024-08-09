@@ -1,0 +1,31 @@
+# Contributor: Samuel Hierholzer <samuel@ton-kunst.ch>
+# Maintainer: Andy Chu <andychup@gmail.com>
+
+pkgname=oils-for-unix
+pkgver=0.22.0
+pkgrel=0
+pkgdesc="Oils is a Unix shell with JSON-compatible structured data. It's our upgrade path from bash to a better language and runtime."
+url="https://www.oilshell.org"
+arch="all"
+license="Apache-2.0"
+# !check as source has tests, but tagged releases don't
+options="!check"
+makedepends="readline-dev"
+subpackages="$pkgname-doc"
+source="https://www.oilshell.org/download/oils-for-unix-$pkgver.tar.gz"
+
+build() {
+	# not gnu autoconf
+	./configure \
+		--prefix /usr \
+		--datarootdir /usr/share
+	_build/oils.sh
+}
+
+package() {
+	DESTDIR="$pkgdir" ./install
+}
+
+sha512sums="
+157a041997ab4ef0b5a62183040ea16420f58adaca4cf70a11c316e681c10b59b8f44f5fbe4ab2fd5aec39b5510b6a9c369a29c394138cff427188c782d1cf86  oils-for-unix-0.22.0.tar.gz
+"
