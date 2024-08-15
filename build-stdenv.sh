@@ -16,6 +16,14 @@ apk add abuild-rootbld
 cd main/oils-for-unix
 abuild -Fr
 
+# Set up the package user
+apk add sudo build-base alpine-sdk
+# create a packager user and add him to sudo list
+adduser -Du 1000 packager
+addgroup packager abuild
+echo 'packager ALL=(ALL) NOPASSWD:ALL' \
+  >/etc/sudoers.d/packager
+
 # TODO: all the required packages to have a running system
 # Not sure what is really required
 #files="

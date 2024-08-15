@@ -26,9 +26,10 @@ ln -s oils-for-unix /bin/sh
 #
 /bin/sh --version
 
-cd /aports
+cd /aports/main/abuild
+abuild -Fr
 #ls
-for file in main/*; do
-  cd /aports/$file
-  abuild -Fr
-done
+#for file in main/*; do
+#  cd /aports/$file
+#  abuild -Fr
+#done
