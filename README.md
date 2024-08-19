@@ -20,4 +20,6 @@ TODOS:
 - Create Base Container with patched /bin/sh (`./build-container.sh` which uses `./build-stdenv.sh`) directly from this repo
 - Run the container with its cmd `./build-all.sh`
   - It should check if /aports/ is a git folder. if not -> git clone oily-pine (`OILY_PINE_REPO`)
-  - It should go through each 
+```bash
+podman run --rm --userns=keep-id --mount "type=bind,source=./,target=/aports,rw" oily-pine-build /aports/build-all.s
+```

@@ -4,17 +4,16 @@ set -e
 
 cont=$(buildah from alpine)
 
-buildah run --mount "type=bind,source=$(pwd),target=/aports" $cont /aports/build-stdenv.sh
-buildah copy $cont ./build-all.sh /bin/build-all.sh
+buildah run --mount "rw,type=bind,source=$(pwd),target=/aports" $cont /aports/build-stdenv.sh
+#buildah copy $cont ./build-all.sh /bin/build-all.sh
 buildah config -u packager $cont
 buildah config --workingdir /aports \
   --volume /aports \
-  --unsetlabel alpine \
-  --label oily-pine \
+  --label - \
   --env APORTSDIR=/aports \
-  --cmd /bin/build-all.sh \
+  --cmd /aports/build-all.sh \
   $cont
-buildah commit $cont oily-ci-builder
+buildah commit $cont oily-pine-build
 
 # create user
 

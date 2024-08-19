@@ -1,0 +1,53 @@
+#!/usr/bin/env ysh
+
+mkdir -p cycle_temp
+rm -rf cycle_temp/*
+
+var files = $(ls deps) => split()
+
+# init visited
+var visited = {}
+for file in (files) {
+  setvar visited[file] = false
+}
+
+var tree = {}
+for file in (files) {
+  setvar tree[file] = []
+  setvar n = glob("deps/$file/*")
+  for f in (n) {
+    call tree[file]->append(f[len("deps/$file/"):])
+  }
+}
+
+func depChain (f, cur_chain, visited) {
+  var file = $(basename $(realpath "deps/$f"))
+  #echo handling $file with $[cur_chain=>join('<-')]
+
+  # Some
+  if (visited => indexOf(file) < 0) {
+    echo "ERROR! Package $file doesn't even exist?!"
+    return ["$file - broken"]
+  }
+  if (visited[file]) {
+    return ([])
+  }
+  if (cur_chain => indexOf(file) >= 0) {
+    echo "DETECTED A LOOP at $file!"
+    = cur_chain
+    return ([])
+  }
+  setvar visited[file] = true
+  var chain = [file]
+  for dep in (tree[file]) {
+    setvar chain = chain ++ (dep => depChain(cur_chain ++ [file], visited))
+  }
+  return (chain)
+}
+
+
+var chain = []
+for file in (files) {
+  setvar chain =  depChain (file, [], visited) ++ chain
+}
+= chain

@@ -10,7 +10,6 @@ arch="all"
 license="Apache-2.0"
 # !check as source has tests, but tagged releases don't
 options="!check"
-makedepends="readline-dev"
 subpackages="$pkgname-doc"
 source="https://www.oilshell.org/download/oils-for-unix-$pkgver.tar.gz"
 

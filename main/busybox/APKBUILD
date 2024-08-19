@@ -5,7 +5,7 @@
 # Maintainer: Sören Tempel <soeren+alpine@soeren-tempel.net>
 pkgname=busybox
 # Overwrite version to be able to update
-pkgver=99.36.1
+pkgver=1.36.1
 pkgrel=31
 pkgdesc="Size optimized toolbox of many common UNIX utilities"
 url="https://busybox.net/"
