@@ -1,3 +1,21 @@
+Fork of https://github.com/Melkor333/oily-pine
+
+I've added a script, `dev.sh`, to automate the build/setup process. To run
+locally, you will just need a POSIX sh and docker (or podman with a docker
+alias). Start with:
+
+```sh
+$ ./dev.sh start
+
+# ... will take a few mins
+
+osh-0.22.0$ # Now you are in a pure OSH system!
+osh-0.22.0$ # Let's build mksh
+osh-0.22.0$ /aports/dev.sh buildMksh
+```
+
+---
+
 # Oily-pine
 
 Alpine mixed with oils-for-unix.
